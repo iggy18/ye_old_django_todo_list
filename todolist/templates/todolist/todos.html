@@ -2,34 +2,13 @@
 {% block content %}
 <div class="container">
     <h1>New To Do</h1>
-    <form>
-        <label class="col-sm" for="title">To Do Title:
-            <input type="text">
-        </label><br>
-        
-        <label class="col-sm" for="title">To Do Status:<br>
-            <input type="radio" id="incomplete" name="status" value="incomplete">
-            <label for="male">Incomplete</label><br>
-            <input type="radio" id="in-progress" name="status" value="in-progress">
-            <label for="male">In Progress</label><br>
-            <input type="radio" id="complete" name="status" value="complete">
-            <label for="male">Complete</label><br>
-        </label><br>
-
-        <label class="col-sm" for="title">To Do Priority:
-        <input type="radio" id="high" name="priority" value="high">
-            <label for="male">high</label><br>
-            <input type="radio" id="high" name="priority" value="med">
-            <label for="male">med</label><br>
-            <input type="radio" id="high" name="priority" value="low">
-            <label for="male">low</label><br>
-        </label><br>
-
-        <label for="title">To Do Description:</label><br>
-        <input type="text">
-
+    <form action="" method="post">
+    {% csrf_token %}
+        {{ form.as_p }}
+    
         <input type="submit">
     </form>
+
     {% for todo in todos %}
         <div class="row">
             <div class="col-md">
