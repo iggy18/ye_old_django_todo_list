@@ -2,22 +2,29 @@
 {% block content %}
 <div class="container">
     <h1>New To Do</h1>
-    <form action="" method="post">
-    {% csrf_token %}
-        {{ form.as_p }}
-    
-        <input type="submit">
-    </form>
+    <div class="col-md">
+        <div class="form-group">
+            <form action="" method="post">
+            {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit">
+            </form>
+        </div>
+    </div>
 
     {% for todo in todos %}
+    
         <div class="row">
             <div class="col-md">
             <h2>name: {{todo.name}}</h2>
             <p>status: {{todo.status_id}}</p>
             <p>priority: {{todo.priority}}</p>
             <p> description: {{todo.details}}</p>
+            {% comment %} this button goes to the delete view {% endcomment %}
+            <a href="{% url 'delete_todo' todo.todo_id %}" class="btn btn-primary"> Delete todo </a>
             </div>
         </div>
+
     {% endfor %}
 </div>
 {% endblock %}
