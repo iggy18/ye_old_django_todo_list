@@ -16,3 +16,8 @@ def home(request):
     todos = ToDo.objects.all()
     context = {'todos': todos, 'form': form}
     return render(request, 'todolist/todos.html', context)
+
+def delete_todo(request, todo_id):
+    todo = ToDo.objects.get(pk=todo_id)
+    todo.delete()
+    return HttpResponseRedirect("/")
